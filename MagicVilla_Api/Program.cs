@@ -1,5 +1,4 @@
 
-using MagicVilla_Api.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
