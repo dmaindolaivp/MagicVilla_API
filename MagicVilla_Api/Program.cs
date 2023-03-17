@@ -1,5 +1,8 @@
 
 
+using MagicVilla_Api.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -15,7 +18,9 @@ var builder = WebApplication.CreateBuilder(args);
 //builder.Host.UseSerilog();
 
 // Add services to the container.
-
+builder.Services.AddDbContext<ApplicationDbContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSqlConnection") );
+}); 
 builder.Services.AddControllers(options => {
     //options.ReturnHttpNotAcceptable = true;
 }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
